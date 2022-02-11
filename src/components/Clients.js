@@ -2,7 +2,7 @@ import {useDispatch, useSelector} from "react-redux";
 import {useState} from "react";
 import {addClientAC} from "../redux/clientsReducer";
 import {Client} from "./Client";
-import {usersResponse} from "../asyncActions/usersResponse";
+import {usersResponse} from "../asyncActions/thunk/usersResponse";
 
 export const Clients = () => {
     const [name, setName] = useState('')
@@ -22,7 +22,7 @@ export const Clients = () => {
                 value={name}
                 onChange={(e) => setName(e.target.value)}/>
             <button onClick={addClientHandler}>Add</button>
-            <button onClick={() => dispatch(usersResponse())}>Add from db</button>
+            <button onClick={() => dispatch({type: 'LOAD_CLIENTS'})}>Add from db</button>
             {clients.length
                 ? clients.map(client => <Client key={client.id} client={client} />)
                 : <p>Clients empty</p>

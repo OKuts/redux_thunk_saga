@@ -1,4 +1,4 @@
-import {addManyClientsAC} from "../redux/clientsReducer";
+import {addManyClientsAC} from "../../redux/clientsReducer";
 
 export const usersResponse = () => (dispatch) => {
     return fetch('https://jsonplaceholder.typicode.com/users')
